@@ -4,7 +4,7 @@
 
 ---
 
-## 📌 1. Visión General del Proyecto
+##  1. Visión General del Proyecto
 
  **Velvet & Blade** hemos consolidado un modelo de atención integral de imagen personal que combina dos líneas de servicio especializadas:
 * **Blade (Barbería de Autor):** Cortes de precisión, perfilado de barba y tratamientos faciales.
@@ -14,13 +14,13 @@ Debido al alto flujo de clientes en nuestras instalaciones, este proyecto nace c
 
 ---
 
-## 👤 Integrante del Proyecto
+##  Integrante del Proyecto
 
 * **Desarrollador:** Gustavo Alexis Rojas Vasquez
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+##  Tecnologías Utilizadas
 
 * **Framework Móvil Híbrido:** [Ionic Framework](https://ionicframework.com/) (Tabs Template)
 * **Framework Web / Runtime:** Angular / TypeScript (o JavaScript)
