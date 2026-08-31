@@ -1,5 +1,3 @@
-// Modelos centrales del dominio Velvet & Blade: Usuario, Servicio, Estación y Cita.
-
 export type ProfileType = 'cliente' | 'especialista';
 
 export interface Usuario {
@@ -18,6 +16,7 @@ export interface Servicio {
   categoria: CategoriaServicio;
   duracionMinutos: number;
   precio: number;
+  descripcion: string;
 }
 
 export type TipoEstacion = 'sillon-barberia' | 'mesa-manicura';
@@ -26,16 +25,24 @@ export interface Estacion {
   id: string;
   nombre: string;
   tipo: TipoEstacion;
+  profesional: string;
 }
 
 export type EstadoCita = 'Confirmado' | 'En Atención' | 'Completado' | 'Cancelado';
+
+export type EstadoBloque = 'disponible' | 'ocupado' | 'reservado';
+
+export interface BloqueHorario {
+  hora: string;
+  estado: EstadoBloque;
+}
 
 export interface Cita {
   id: string;
   clienteEmail: string;
   servicioId: string;
   estacionId: string;
-  fecha: string; // ISO date, e.g. '2026-09-02'
-  horaInicio: string; // '09:00'
+  fecha: string;
+  horaInicio: string;
   estado: EstadoCita;
 }

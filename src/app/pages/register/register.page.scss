@@ -1,0 +1,41 @@
+.intro-text {
+  margin: 4px 4px 20px;
+}
+
+.profile-type-block {
+  margin: 12px 4px 16px;
+
+  .segment-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--ion-color-medium-shade);
+    margin-bottom: 8px;
+  }
+}
+
+.terms-item {
+  --background: transparent;
+  --padding-start: 4px;
+
+  ion-checkbox {
+    margin-right: 10px;
+  }
+
+  .terms-label {
+    font-size: 0.85rem;
+    white-space: normal;
+  }
+}
+
+.login-link {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+
+  a {
+    color: var(--ion-color-primary);
+    font-weight: 700;
+    text-decoration: none;
+  }
+}

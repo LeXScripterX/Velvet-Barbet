@@ -1,13 +1,120 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login" text="Atrás"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear cuenta</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="page-shell">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">register</ion-title>
+      <ion-title size="large">Crear cuenta</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <p class="vb-lead intro-text">
+    Únete a <strong>Velvet &amp; Blade</strong> y agenda barbería o spa de uñas en segundos.
+  </p>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <ion-input
+      class="ion-margin-bottom"
+      [fill]="ui.inputFill"
+      label="Nombre completo"
+      labelPlacement="stacked"
+      formControlName="fullName"
+      placeholder="Nombre y apellidos"
+      autocomplete="name"
+    >
+      <ion-icon name="person-outline" slot="start" color="secondary"></ion-icon>
+    </ion-input>
+    @if (fullName.invalid && fullName.touched) {
+      <ion-text color="danger" class="field-error"><p>Ingresa tu nombre completo.</p></ion-text>
+    }
+
+    <ion-input
+      class="ion-margin-bottom"
+      [fill]="ui.inputFill"
+      label="Teléfono"
+      labelPlacement="stacked"
+      type="tel"
+      formControlName="phone"
+      placeholder="3001234567"
+      autocomplete="tel"
+    >
+      <ion-icon name="call-outline" slot="start" color="secondary"></ion-icon>
+    </ion-input>
+    @if (phone.invalid && phone.touched) {
+      <ion-text color="danger" class="field-error"><p>Ingresa un teléfono válido (7 a 10 dígitos).</p></ion-text>
+    }
+
+    <ion-input
+      class="ion-margin-bottom"
+      [fill]="ui.inputFill"
+      label="Correo electrónico"
+      labelPlacement="stacked"
+      type="email"
+      formControlName="email"
+      placeholder="tucorreo@ejemplo.com"
+      autocomplete="email"
+    >
+      <ion-icon name="mail-outline" slot="start" color="secondary"></ion-icon>
+    </ion-input>
+    @if (email.invalid && email.touched) {
+      <ion-text color="danger" class="field-error"><p>Ingresa un correo válido.</p></ion-text>
+    }
+
+    <ion-input
+      class="ion-margin-bottom"
+      [fill]="ui.inputFill"
+      label="Contraseña"
+      labelPlacement="stacked"
+      type="password"
+      formControlName="password"
+      placeholder="Mínimo 6 caracteres"
+      autocomplete="new-password"
+    >
+      <ion-icon name="lock-closed-outline" slot="start" color="secondary"></ion-icon>
+    </ion-input>
+    @if (password.invalid && password.touched) {
+      <ion-text color="danger" class="field-error"><p>La contraseña debe tener al menos 6 caracteres.</p></ion-text>
+    }
+
+    <div class="profile-type-block">
+      <ion-label class="segment-label">Tipo de perfil</ion-label>
+      <ion-segment formControlName="profileType" color="primary">
+        <ion-segment-button value="cliente">
+          <ion-label>Cliente</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="especialista">
+          <ion-label>Especialista</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <ion-item class="terms-item" lines="none">
+      <ion-checkbox formControlName="acceptedTerms" slot="start"></ion-checkbox>
+      <ion-label class="terms-label">Acepto los términos y condiciones</ion-label>
+    </ion-item>
+    @if (acceptedTerms.invalid && acceptedTerms.touched) {
+      <ion-text color="danger" class="field-error"><p>Debes aceptar los términos y condiciones.</p></ion-text>
+    }
+
+    @if (registerError()) {
+      <ion-text color="danger" class="register-error"><p>{{ registerError() }}</p></ion-text>
+    }
+
+    <ion-button expand="block" type="submit" class="ion-margin-top" color="primary">
+      Crear cuenta
+    </ion-button>
+
+    <p class="login-link ion-text-center">
+      ¿Ya tienes cuenta?
+      <a routerLink="/login">Inicia sesión</a>
+    </p>
+  </form>
+  </div>
 </ion-content>

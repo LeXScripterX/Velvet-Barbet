@@ -1,13 +1,69 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>select-slot</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1" text="Servicios"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Disponibilidad</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">select-slot</ion-title>
+      <ion-title size="large">Horario</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div class="ion-padding page-shell">
+    @if (servicio() && estacion()) {
+      <p class="vb-kicker">{{ estacion()!.nombre }} · {{ estacion()!.profesional }}</p>
+      <h1 class="vb-title">{{ servicio()!.nombre }}</h1>
+      <p class="vb-lead">{{ servicio()!.duracionMinutos }} min · {{ precio(servicio()!.precio) }}</p>
+
+      <h2 class="section-title">Fecha</h2>
+      <ion-datetime
+        presentation="date"
+        locale="es-CO"
+        [min]="minDate"
+        [max]="maxDate"
+        [value]="fecha()"
+        (ionChange)="cambiarFecha($event)"
+      ></ion-datetime>
+
+      <h2 class="section-title">Bloques de tiempo</h2>
+      <div class="legend">
+        <span><i class="dot disponible"></i> Disponible</span>
+        <span><i class="dot ocupado"></i> Ocupado</span>
+        <span><i class="dot reservado"></i> Reservado</span>
+      </div>
+
+      <div class="slot-grid">
+        @for (bloque of bloques(); track bloque.hora) {
+          <ion-button
+            class="slot-btn"
+            [class.disponible]="bloque.estado === 'disponible'"
+            [class.ocupado]="bloque.estado === 'ocupado'"
+            [class.reservado]="bloque.estado === 'reservado'"
+            [class.activo]="horaSeleccionada() === bloque.hora"
+            [disabled]="bloque.estado !== 'disponible'"
+            (click)="seleccionarHora(bloque.hora)"
+          >
+            {{ bloque.hora }}
+          </ion-button>
+        }
+      </div>
+
+      <ion-button
+        expand="block"
+        color="primary"
+        [disabled]="!horaSeleccionada()"
+        (click)="confirmar()"
+      >
+        Confirmar cita
+      </ion-button>
+    } @else {
+      <p class="vb-lead">Selecciona primero un servicio y una estación.</p>
+      <ion-button expand="block" routerLink="/tabs/tab1">Ir al catálogo</ion-button>
+    }
+  </div>
 </ion-content>

@@ -1,17 +1,66 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title>Servicios</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Servicios</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div class="ion-padding page-shell">
+    <p class="vb-kicker">Catálogo</p>
+    <p class="vb-lead">Elige categoría, servicio y estación de atención.</p>
+
+    <ion-segment [value]="categoria()" (ionChange)="cambiarCategoria($event)" color="primary" class="ion-margin-vertical">
+      <ion-segment-button value="barberia">
+        <ion-label>Barbería de Autor</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="unas">
+        <ion-label>Spa de Uñas</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    @for (servicio of serviciosFiltrados(); track servicio.id) {
+      <ion-card
+        class="vb-card"
+        [class.selected]="servicioSeleccionado()?.id === servicio.id"
+        button
+        (click)="seleccionarServicio(servicio)"
+      >
+        <ion-card-header>
+          <ion-card-subtitle>{{ servicio.duracionMinutos }} min</ion-card-subtitle>
+          <ion-card-title>{{ servicio.nombre }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>{{ servicio.descripcion }}</p>
+          <div class="vb-meta">
+            <ion-chip color="secondary">{{ precio(servicio.precio) }}</ion-chip>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    }
+
+    @if (servicioSeleccionado(); as servicio) {
+      <h2 class="section-title">Estación o profesional</h2>
+      <p class="vb-lead">Selecciona sillón o mesa para continuar al horario.</p>
+
+      @for (estacion of estacionesFiltradas(); track estacion.id) {
+        <ion-item class="station-item" button (click)="irAHorario(estacion)" detail="true">
+          <ion-icon
+            slot="start"
+            [name]="categoria() === 'barberia' ? 'cut-outline' : 'flower-outline'"
+            color="primary"
+          ></ion-icon>
+          <ion-label>
+            <h2>{{ estacion.nombre }}</h2>
+            <p>{{ estacion.profesional }} · {{ servicio.nombre }}</p>
+          </ion-label>
+        </ion-item>
+      }
+    }
+  </div>
 </ion-content>

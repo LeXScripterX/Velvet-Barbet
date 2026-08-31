@@ -19,6 +19,13 @@ export class AuthService {
       password: '123456',
       profileType: 'cliente',
     },
+    {
+      fullName: 'Andrés Molina',
+      phone: '3100000000',
+      email: 'especialista@velvetblade.com',
+      password: '123456',
+      profileType: 'especialista',
+    },
   ];
 
   /** Usuario autenticado actualmente (null si no hay sesión) */

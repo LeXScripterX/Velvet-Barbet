@@ -1,2 +1,98 @@
-// For information on how to create your own theme, please refer to:
-// https://ionicframework.com/docs/theming/
+// Paleta Velvet & Blade: rojo, morado y blanco.
+// Ionic aplica Material (md) en Android y Cupertino (ios) en iOS de forma automática.
+
+:root {
+  --ion-color-primary: #be123c;
+  --ion-color-primary-rgb: 190, 18, 60;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #a71035;
+  --ion-color-primary-tint: #c52a50;
+
+  --ion-color-secondary: #7e22ce;
+  --ion-color-secondary-rgb: 126, 34, 206;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #6f1eb5;
+  --ion-color-secondary-tint: #8b38d3;
+
+  --ion-color-tertiary: #a21caf;
+  --ion-color-tertiary-rgb: 162, 28, 175;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #8f199a;
+  --ion-color-tertiary-tint: #ab33b7;
+
+  --ion-color-success: #0f766e;
+  --ion-color-success-rgb: 15, 118, 110;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #0d6861;
+  --ion-color-success-tint: #27847d;
+
+  --ion-color-warning: #d97706;
+  --ion-color-warning-rgb: 217, 119, 6;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #bf6905;
+  --ion-color-warning-tint: #dd851f;
+
+  --ion-color-danger: #e11d48;
+  --ion-color-danger-rgb: 225, 29, 72;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #c61a3f;
+  --ion-color-danger-tint: #e4345a;
+
+  --ion-color-light: #faf7fb;
+  --ion-color-light-rgb: 250, 247, 251;
+  --ion-color-light-contrast: #1c1917;
+  --ion-color-light-contrast-rgb: 28, 25, 23;
+  --ion-color-light-shade: #dcd9dc;
+  --ion-color-light-tint: #fbf8fb;
+
+  --ion-color-medium: #78716c;
+  --ion-color-medium-rgb: 120, 113, 108;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #6a635f;
+  --ion-color-medium-tint: #867f7b;
+
+  --ion-color-dark: #1c1917;
+  --ion-color-dark-rgb: 28, 25, 23;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #191614;
+  --ion-color-dark-tint: #33302e;
+
+  --ion-background-color: #faf7fb;
+  --ion-background-color-rgb: 250, 247, 251;
+  --ion-text-color: #1c1917;
+  --ion-text-color-rgb: 28, 25, 23;
+  --ion-toolbar-background: #ffffff;
+  --ion-item-background: #ffffff;
+  --ion-card-background: #ffffff;
+  --vb-gradient: linear-gradient(135deg, #be123c 0%, #7e22ce 55%, #581c87 100%);
+}
+
+.md {
+  --ion-font-family: 'Roboto', 'Noto Sans', sans-serif;
+  --ion-border-radius: 16px;
+}
+
+.ios {
+  --ion-font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  --ion-padding: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-background-color: #1c1218;
+    --ion-background-color-rgb: 28, 18, 24;
+    --ion-text-color: #faf7fb;
+    --ion-text-color-rgb: 250, 247, 251;
+    --ion-toolbar-background: #2a1822;
+    --ion-item-background: #2a1822;
+    --ion-card-background: #2a1822;
+  }
+}

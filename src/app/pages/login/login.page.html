@@ -1,28 +1,39 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="light">
+  <ion-toolbar>
     <ion-title>Iniciar sesión</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <div class="brand-block ion-text-center">
-    <ion-icon name="cut-outline" class="brand-icon"></ion-icon>
-    <h1 class="brand-title">VELVET &amp; BLADE</h1>
-    <p class="brand-subtitle">Barber &amp; Nail Lounge</p>
+  <div class="page-shell">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Iniciar sesión</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-text-center vb-hero">
+    <div class="brand-mark">
+      <ion-icon name="cut-outline"></ion-icon>
+    </div>
+    <p class="vb-kicker">Barber &amp; Nail Lounge</p>
+    <h1 class="vb-title">Velvet &amp; Blade</h1>
+    <p class="vb-lead">Agenda tu sillón o mesa en segundos.</p>
   </div>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
-
-    <ion-item class="form-item" fill="outline">
+    <ion-input
+      class="ion-margin-bottom"
+      [fill]="ui.inputFill"
+      label="Correo electrónico"
+      labelPlacement="stacked"
+      type="email"
+      formControlName="email"
+      placeholder="tucorreo@ejemplo.com"
+      autocomplete="email"
+    >
       <ion-icon name="mail-outline" slot="start" color="secondary"></ion-icon>
-      <ion-label position="stacked">Correo electrónico</ion-label>
-      <ion-input
-        type="email"
-        formControlName="email"
-        placeholder="tucorreo@ejemplo.com"
-        autocomplete="email"
-      ></ion-input>
-    </ion-item>
+    </ion-input>
     @if (email.invalid && email.touched) {
       <ion-text color="danger" class="field-error">
         @if (email.errors?.['required']) {
@@ -34,16 +45,18 @@
       </ion-text>
     }
 
-    <ion-item class="form-item" fill="outline">
+    <ion-input
+      class="ion-margin-bottom"
+      [fill]="ui.inputFill"
+      label="Contraseña"
+      labelPlacement="stacked"
+      type="password"
+      formControlName="password"
+      placeholder="••••••••"
+      autocomplete="current-password"
+    >
       <ion-icon name="lock-closed-outline" slot="start" color="secondary"></ion-icon>
-      <ion-label position="stacked">Contraseña</ion-label>
-      <ion-input
-        type="password"
-        formControlName="password"
-        placeholder="••••••••"
-        autocomplete="current-password"
-      ></ion-input>
-    </ion-item>
+    </ion-input>
     @if (password.invalid && password.touched) {
       <ion-text color="danger" class="field-error">
         @if (password.errors?.['required']) {
@@ -71,7 +84,9 @@
     </p>
 
     <p class="demo-hint ion-text-center">
-      Demo: demo&#64;velvetblade.com / 123456
+      Demo cliente: demo&#64;velvetblade.com / 123456<br />
+      Demo especialista: especialista&#64;velvetblade.com / 123456
     </p>
   </form>
+  </div>
 </ion-content>

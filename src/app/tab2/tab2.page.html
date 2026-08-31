@@ -1,17 +1,59 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title>Mis citas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Mis citas</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <div class="ion-padding page-shell">
+    <ion-segment [value]="filtro()" (ionChange)="cambiarFiltro($event)" color="primary">
+      <ion-segment-button value="activas">
+        <ion-label>Activas</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="historial">
+        <ion-label>Historial</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    @if (citasVisibles().length === 0) {
+      <p class="vb-lead empty">No hay citas en esta vista.</p>
+    }
+
+    @for (cita of citasVisibles(); track cita.id) {
+      <ion-card class="vb-card">
+        <ion-card-header>
+          <ion-card-subtitle>{{ cita.fecha }} · {{ cita.horaInicio }}</ion-card-subtitle>
+          <ion-card-title>{{ nombreServicio(cita.servicioId) }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>{{ nombreEstacion(cita.estacionId) }}</p>
+          <ion-chip [color]="colorEstado(cita.estado)">{{ cita.estado }}</ion-chip>
+
+          @if (cita.estado === 'Confirmado' && !esEspecialista()) {
+            <ion-button size="small" fill="outline" color="danger" (click)="cancelar(cita.id)">
+              Cancelar
+            </ion-button>
+          }
+
+          @if (esEspecialista() && cita.estado !== 'Completado' && cita.estado !== 'Cancelado') {
+            <div class="status-actions">
+              @if (cita.estado === 'Confirmado') {
+                <ion-button size="small" (click)="cambiarEstado(cita.id, 'En Atención')">En atención</ion-button>
+              }
+              @if (cita.estado === 'En Atención') {
+                <ion-button size="small" color="success" (click)="cambiarEstado(cita.id, 'Completado')">Completar</ion-button>
+              }
+              <ion-button size="small" fill="outline" color="danger" (click)="cancelar(cita.id)">Cancelar</ion-button>
+            </div>
+          }
+        </ion-card-content>
+      </ion-card>
+    }
+  </div>
 </ion-content>
