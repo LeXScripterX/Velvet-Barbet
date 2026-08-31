@@ -4,12 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular';
 
 @Component({
-  selector: 'app-select-slot2',
-  templateUrl: './select-slot2.page.html',
-  styleUrls: ['./select-slot2.page.scss'],
+  selector: 'app-select-slot',
+  templateUrl: './select-slot.page.html',
+  styleUrls: ['./select-slot.page.scss'],
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
-export class SelectSlot2Page implements OnInit {
+export class SelectSlotPage implements OnInit {
 
   constructor() { }
 
