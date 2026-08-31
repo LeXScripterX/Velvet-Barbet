@@ -1,0 +1,66 @@
+.brand-block {
+  margin: 2rem 0 2.5rem;
+
+  .brand-icon {
+    font-size: 48px;
+    color: var(--ion-color-primary);
+  }
+
+  .brand-title {
+    margin: 0.5rem 0 0;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #be123c 0%, #701a75 50%, #581c87 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .brand-subtitle {
+    margin: 0;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ion-color-secondary);
+    font-weight: 600;
+  }
+}
+
+.form-item {
+  margin-bottom: 4px;
+  --border-radius: 12px;
+}
+
+.field-error {
+  display: block;
+  font-size: 0.75rem;
+  margin: 2px 0 12px 4px;
+
+  p {
+    margin: 0;
+  }
+}
+
+.login-error {
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+.register-link {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+
+  a {
+    color: var(--ion-color-primary);
+    font-weight: 700;
+    text-decoration: none;
+  }
+}
+
+.demo-hint {
+  margin-top: 0.75rem;
+  font-size: 0.7rem;
+  color: var(--ion-color-medium);
+}
